@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnpqf0ifuu7v"]
+
+[ext_resource type="Script" path="res://Scripts/CardBase.gd" id="1_pe55k"]
+[ext_resource type="Shader" path="res://Scripts/CardBase.gdshader" id="1_tp6jg"]
+[ext_resource type="Texture2D" uid="uid://cxkk4jcto3rav" path="res://Assets/Cards/cardborder.png" id="2_650pk"]
+[ext_resource type="FontFile" uid="uid://csrcq85g3qx6i" path="res://Assets/Fonts/MajorMonoDisplay-Regular.ttf" id="3_07j2p"]
+[ext_resource type="Texture2D" uid="uid://bdflhx7r1vwmi" path="res://Assets/Cards/Back.png" id="4_rvlj8"]
+[ext_resource type="Texture2D" uid="uid://cmliq6mnteykt" path="res://Assets/Cards/Focus.png" id="5_8vcjg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hog6l"]
+resource_local_to_scene = true
+shader = ExtResource("1_tp6jg")
+shader_parameter/shaderOn = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_pfsyc"]
+font = ExtResource("3_07j2p")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[node name="CardBase" type="MarginContainer"]
+material = SubResource("ShaderMaterial_hog6l")
+anchors_preset = -1
+anchor_right = 0.217
+anchor_bottom = 0.54
+offset_right = 0.0159912
+offset_bottom = 0.0799866
+pivot_offset = Vector2(125, 175)
+script = ExtResource("1_pe55k")
+
+[node name="Card" type="Sprite2D" parent="."]
+use_parent_material = true
+centered = false
+
+[node name="Border" type="Sprite2D" parent="."]
+scale = Vector2(0.648438, 0.656015)
+texture = ExtResource("2_650pk")
+centered = false
+
+[node name="TextContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="TextContainer"]
+custom_minimum_size = Vector2(0, 270)
+layout_mode = 2
+
+[node name="horizontal" type="HBoxContainer" parent="TextContainer"]
+layout_mode = 2
+
+[node name="LeftMargin" type="MarginContainer" parent="TextContainer/horizontal"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="PurchasePowerContainer" type="CenterContainer" parent="TextContainer/horizontal"]
+layout_mode = 2
+
+[node name="PurchasePower" type="Label" parent="TextContainer/horizontal/PurchasePowerContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_pfsyc")
+
+[node name="CenterMargin" type="MarginContainer" parent="TextContainer/horizontal"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PriceContainer" type="CenterContainer" parent="TextContainer/horizontal"]
+layout_mode = 2
+
+[node name="Price" type="Label" parent="TextContainer/horizontal/PriceContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_pfsyc")
+
+[node name="RightMargin" type="MarginContainer" parent="TextContainer/horizontal"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="CardBack" type="Sprite2D" parent="."]
+texture = ExtResource("4_rvlj8")
+centered = false
+
+[node name="Focus" type="TextureButton" parent="."]
+layout_mode = 2
+texture_hover = ExtResource("5_8vcjg")
+texture_disabled = ExtResource("5_8vcjg")
+stretch_mode = 0
+
+[connection signal="mouse_entered" from="Focus" to="." method="_on_focus_mouse_entered"]
+[connection signal="mouse_exited" from="Focus" to="." method="_on_focus_mouse_exited"]

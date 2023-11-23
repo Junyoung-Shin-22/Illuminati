@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://w25r50q8l2he"]
+
+[ext_resource type="Script" path="res://Scripts/GateToken.gd" id="1_2lu85"]
+[ext_resource type="Texture2D" uid="uid://dx03eft2ilpv6" path="res://Assets/Cards/Symbols/SymbolHadamard.png" id="2_s8swu"]
+
+[node name="GateToken" type="Control"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+size_flags_horizontal = 3
+script = ExtResource("1_2lu85")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(11, 0)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_s8swu")
+centered = false

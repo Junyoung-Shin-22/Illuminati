@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnpqf0ifuu7v"]
+
+[ext_resource type="Script" path="res://Scripts/CardBase.gd" id="1_pe55k"]
+[ext_resource type="Shader" path="res://Scripts/CardBase.gdshader" id="1_tp6jg"]
+[ext_resource type="Texture2D" uid="uid://cxkk4jcto3rav" path="res://Assets/Cards/cardborder.png" id="2_650pk"]
+[ext_resource type="FontFile" uid="uid://csrcq85g3qx6i" path="res://Assets/Fonts/MajorMonoDisplay-Regular.ttf" id="3_07j2p"]
+[ext_resource type="Texture2D" uid="uid://bdflhx7r1vwmi" path="res://Assets/Cards/Back.png" id="4_rvlj8"]
+[ext_resource type="Texture2D" uid="uid://cmliq6mnteykt" path="res://Assets/Cards/Focus.png" id="5_8vcjg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hog6l"]
+resource_local_to_scene = true
+shader = ExtResource("1_tp6jg")
+shader_parameter/shaderOn = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_pfsyc"]
+font = ExtResource("3_07j2p")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[node name="CardBase" type="Control"]
+material = SubResource("ShaderMaterial_hog6l")
+layout_mode = 3
+anchors_preset = 0
+offset_right = 250.0
+offset_bottom = 350.0
+script = ExtResource("1_pe55k")
+
+[node name="Card" type="Sprite2D" parent="."]
+use_parent_material = true
+centered = false
+
+[node name="Border" type="Sprite2D" parent="."]
+scale = Vector2(0.648438, 0.656015)
+texture = ExtResource("2_650pk")
+centered = false
+
+[node name="CardBack" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_rvlj8")
+centered = false
+
+[node name="Focus" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 350.0
+texture_hover = ExtResource("5_8vcjg")
+texture_disabled = ExtResource("5_8vcjg")
+stretch_mode = 0
+
+[node name="PurchasePower" type="Label" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 260.0
+offset_right = 45.0
+offset_bottom = 300.0
+label_settings = SubResource("LabelSettings_pfsyc")
+
+[node name="Price" type="Label" parent="."]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 260.0
+offset_right = 206.0
+offset_bottom = 300.0
+label_settings = SubResource("LabelSettings_pfsyc")
+horizontal_alignment = 2
+
+[connection signal="pressed" from="Focus" to="." method="_on_focus_pressed"]

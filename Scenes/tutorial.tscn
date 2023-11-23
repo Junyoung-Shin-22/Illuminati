@@ -1,0 +1,1005 @@
+[gd_scene load_steps=26 format=3 uid="uid://chrxn5kdripos"]
+
+[ext_resource type="Script" path="res://Scripts/tutorial.gd" id="1_tugwh"]
+[ext_resource type="Texture2D" uid="uid://co5f7ff4817od" path="res://Assets/Images/rotary__scale.png" id="2_12iyb"]
+[ext_resource type="PackedScene" uid="uid://c633kdr1xd3wm" path="res://Scenes/Lamp.tscn" id="3_fjap3"]
+[ext_resource type="FontFile" uid="uid://csrcq85g3qx6i" path="res://Assets/Fonts/MajorMonoDisplay-Regular.ttf" id="4_7c7m3"]
+[ext_resource type="FontFile" uid="uid://cmnpkg8hxfg7j" path="res://Assets/Fonts/title_button_font_file.tres" id="5_1v11k"]
+[ext_resource type="PackedScene" uid="uid://co5gqufj13qf1" path="res://Scenes/shop_sprite.tscn" id="6_wr5vi"]
+[ext_resource type="Texture2D" uid="uid://bdflhx7r1vwmi" path="res://Assets/Cards/Back.png" id="7_i6swq"]
+[ext_resource type="Texture2D" uid="uid://qdwbdso8aw3j" path="res://Assets/Cards/BackDisabled.png" id="8_m6lhr"]
+[ext_resource type="Script" path="res://Scripts/Cards.gd" id="9_j3n3p"]
+[ext_resource type="Script" path="res://Scripts/Shop.gd" id="10_lpx4q"]
+[ext_resource type="Texture2D" uid="uid://cvxw15qi0vfh7" path="res://Assets/Cards/Symbols/SymbolIdentity.png" id="11_m5awg"]
+[ext_resource type="Texture2D" uid="uid://cdxicmg7s71ik" path="res://Assets/Cards/Symbols/SymbolNot.png" id="12_slsy7"]
+[ext_resource type="Texture2D" uid="uid://dx03eft2ilpv6" path="res://Assets/Cards/Symbols/SymbolHadamard.png" id="13_lk4g6"]
+[ext_resource type="Texture2D" uid="uid://cg7c47gdr6op8" path="res://Assets/Cards/Symbols/SymbolConditional.png" id="14_cfrls"]
+[ext_resource type="Texture2D" uid="uid://bk4yrm6wx4l8i" path="res://Assets/Cards/Symbols/SymbolNotConditional.png" id="15_pb3yr"]
+[ext_resource type="Texture2D" uid="uid://1lx64eq1e3fg" path="res://Assets/Cards/Symbols/SymbolSwap.png" id="16_owebv"]
+[ext_resource type="Texture2D" uid="uid://dybvhnh3ct4gv" path="res://Assets/Cards/Symbols/SymbolObserve.png" id="17_hap8o"]
+[ext_resource type="Texture2D" uid="uid://cay8v4fn81rem" path="res://Assets/Cards/Symbols/SymbolBronze.png" id="18_354d7"]
+[ext_resource type="Texture2D" uid="uid://ds81m3uxptt16" path="res://Assets/Cards/Symbols/SymbolSilver.png" id="19_aldox"]
+[ext_resource type="Texture2D" uid="uid://bc1gndkvt4l1l" path="res://Assets/Cards/Symbols/SymbolGold.png" id="20_2o4os"]
+[ext_resource type="Script" path="res://Scripts/StateTable.gd" id="21_o3y6l"]
+[ext_resource type="Script" path="res://Scripts/MyDiscarded.gd" id="22_75xf4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d204e"]
+font = ExtResource("4_7c7m3")
+font_size = 35
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p0jb6"]
+font = ExtResource("4_7c7m3")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_hemae"]
+default_font = ExtResource("4_7c7m3")
+default_font_size = 45
+
+[node name="tutorial" type="Node2D"]
+position = Vector2(3, 0)
+script = ExtResource("1_tugwh")
+
+[node name="Rotary" type="Node2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Sprite2D" type="Sprite2D" parent="Rotary"]
+modulate = Color(0.27451, 0.27451, 0.27451, 1)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("2_12iyb")
+
+[node name="Lamps" type="Node2D" parent="Rotary"]
+z_as_relative = false
+
+[node name="0" parent="Rotary/Lamps" instance=ExtResource("3_fjap3")]
+position = Vector2(-2.38419e-07, -144)
+scale = Vector2(0.2, 0.2)
+
+[node name="Label" type="Label" parent="Rotary/Lamps/0"]
+offset_left = -35.0
+offset_top = 135.0
+offset_right = 32.0
+offset_bottom = 228.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 90
+text = "0"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="1" parent="Rotary/Lamps" instance=ExtResource("3_fjap3")]
+position = Vector2(80, -120)
+scale = Vector2(0.2, 0.2)
+
+[node name="Label" type="Label" parent="Rotary/Lamps/1"]
+offset_left = -35.0
+offset_top = 135.0
+offset_right = 32.0
+offset_bottom = 228.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 90
+text = "1"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="2" parent="Rotary/Lamps" instance=ExtResource("3_fjap3")]
+position = Vector2(120, -47)
+scale = Vector2(0.2, 0.2)
+
+[node name="Label" type="Label" parent="Rotary/Lamps/2"]
+offset_left = -35.0
+offset_top = 135.0
+offset_right = 32.0
+offset_bottom = 228.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 90
+text = "2"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="3" parent="Rotary/Lamps" instance=ExtResource("3_fjap3")]
+position = Vector2(106, 39)
+scale = Vector2(0.2, 0.2)
+
+[node name="Label" type="Label" parent="Rotary/Lamps/3"]
+offset_left = -35.0
+offset_top = 135.0
+offset_right = 32.0
+offset_bottom = 228.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 90
+text = "3"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="4" parent="Rotary/Lamps" instance=ExtResource("3_fjap3")]
+position = Vector2(47, 88)
+scale = Vector2(0.2, 0.2)
+
+[node name="Label" type="Label" parent="Rotary/Lamps/4"]
+offset_left = -35.0
+offset_top = 135.0
+offset_right = 32.0
+offset_bottom = 228.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 90
+text = "4"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="5" parent="Rotary/Lamps" instance=ExtResource("3_fjap3")]
+position = Vector2(-40, 88)
+scale = Vector2(0.2, 0.2)
+
+[node name="Label" type="Label" parent="Rotary/Lamps/5"]
+offset_left = -35.0
+offset_top = 135.0
+offset_right = 32.0
+offset_bottom = 228.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 90
+text = "5"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="6" parent="Rotary/Lamps" instance=ExtResource("3_fjap3")]
+position = Vector2(-104, 39)
+scale = Vector2(0.2, 0.2)
+
+[node name="Label" type="Label" parent="Rotary/Lamps/6"]
+offset_left = -35.0
+offset_top = 135.0
+offset_right = 32.0
+offset_bottom = 228.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 90
+text = "6"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="7" parent="Rotary/Lamps" instance=ExtResource("3_fjap3")]
+position = Vector2(-120, -47)
+scale = Vector2(0.2, 0.2)
+
+[node name="Label" type="Label" parent="Rotary/Lamps/7"]
+offset_left = -35.0
+offset_top = 135.0
+offset_right = 32.0
+offset_bottom = 228.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 90
+text = "7"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="8" parent="Rotary/Lamps" instance=ExtResource("3_fjap3")]
+position = Vector2(-75, -120)
+scale = Vector2(0.2, 0.2)
+
+[node name="Label" type="Label" parent="Rotary/Lamps/8"]
+offset_left = -35.0
+offset_top = 135.0
+offset_right = 32.0
+offset_bottom = 228.0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 90
+text = "8"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Rotary"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -22.5
+offset_right = 45.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_7c7m3")
+text = "state"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 27.0
+offset_top = 21.0
+offset_right = 269.0
+offset_bottom = 91.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("5_1v11k")
+theme_override_font_sizes/font_size = 24
+text = "tutorial:
+click around
+as you like..."
+
+[node name="shop_sprite" parent="." instance=ExtResource("6_wr5vi")]
+position = Vector2(1123, 26)
+scale = Vector2(0.4, 0.4)
+script = null
+
+[node name="ShopButton" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1082.0
+offset_right = 1152.0
+offset_bottom = 50.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("4_7c7m3")
+text = "shop"
+
+[node name="MyDiscardButton" type="Button" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 544.0
+offset_right = 236.0
+offset_bottom = 594.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_7c7m3")
+text = "Discarded cards"
+
+[node name="EndPhase" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 308.5
+offset_right = 103.0
+offset_bottom = 339.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_7c7m3")
+text = "EndPhase
+"
+
+[node name="Deck" type="Node2D" parent="."]
+
+[node name="Back" type="TextureButton" parent="Deck"]
+offset_left = 1010.0
+offset_top = 453.0
+offset_right = 1260.0
+offset_bottom = 803.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("7_i6swq")
+texture_disabled = ExtResource("8_m6lhr")
+
+[node name="Cards" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 279.0
+offset_top = 493.0
+offset_right = 979.0
+offset_bottom = 613.0
+script = ExtResource("9_j3n3p")
+
+[node name="Shop" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("10_lpx4q")
+
+[node name="ColorRect" type="ColorRect" parent="Shop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 256.0
+offset_top = 64.0
+offset_right = 856.0
+offset_bottom = 474.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundText" type="Control" parent="Shop"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 256.0
+offset_top = 64.0
+offset_right = 896.0
+offset_bottom = 512.0
+
+[node name="Title" type="Label" parent="Shop/BackgroundText"]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 64.0
+text = "shop"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Money" type="Label" parent="Shop/BackgroundText"]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 320.0
+offset_bottom = 128.0
+text = "money: 0"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="Label" parent="Shop/BackgroundText"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 64.0
+offset_right = 640.0
+offset_bottom = 128.0
+text = "price: 0"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="line" type="Label" parent="Shop/BackgroundText"]
+layout_mode = 0
+offset_top = 104.0
+offset_right = 640.0
+offset_bottom = 144.0
+text = "------------------------"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GatesTitle" type="Label" parent="Shop/BackgroundText"]
+layout_mode = 0
+offset_top = 112.0
+offset_right = 640.0
+offset_bottom = 176.0
+text = "gates"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GateList" type="Control" parent="Shop/BackgroundText"]
+anchors_preset = 0
+offset_left = -256.0
+offset_top = -64.0
+offset_right = -216.0
+offset_bottom = -24.0
+
+[node name="GateNames1" type="Label" parent="Shop/BackgroundText/GateList"]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 223.0
+offset_right = 314.0
+offset_bottom = 287.0
+text = "I"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GateNames2" type="Label" parent="Shop/BackgroundText/GateList"]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 223.0
+offset_right = 402.0
+offset_bottom = 287.0
+text = "X"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GateNames3" type="Label" parent="Shop/BackgroundText/GateList"]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 223.0
+offset_right = 490.0
+offset_bottom = 287.0
+text = "H"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GateNames4" type="Label" parent="Shop/BackgroundText/GateList"]
+layout_mode = 0
+offset_left = 506.0
+offset_top = 223.0
+offset_right = 578.0
+offset_bottom = 287.0
+text = "C"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GateNames5" type="Label" parent="Shop/BackgroundText/GateList"]
+layout_mode = 0
+offset_left = 619.0
+offset_top = 224.0
+offset_right = 691.0
+offset_bottom = 288.0
+text = "NC"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GateNames6" type="Label" parent="Shop/BackgroundText/GateList"]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 223.0
+offset_right = 778.0
+offset_bottom = 287.0
+text = "S"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GateNames7" type="Label" parent="Shop/BackgroundText/GateList"]
+layout_mode = 0
+offset_left = 794.0
+offset_top = 223.0
+offset_right = 866.0
+offset_bottom = 287.0
+text = "M
+"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneyTitles" type="Control" parent="Shop/BackgroundText"]
+anchors_preset = 0
+offset_top = 320.0
+offset_right = 640.0
+offset_bottom = 384.0
+
+[node name="GoldTitle" type="Label" parent="Shop/BackgroundText/MoneyTitles"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = -8.0
+offset_right = 640.0
+offset_bottom = 56.0
+text = "gold"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BronzeTitle" type="Label" parent="Shop/BackgroundText/MoneyTitles"]
+layout_mode = 0
+offset_top = -8.0
+offset_right = 208.0
+offset_bottom = 56.0
+text = "bronze"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SilverTitle" type="Label" parent="Shop/BackgroundText/MoneyTitles"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = -8.0
+offset_right = 424.0
+offset_bottom = 56.0
+text = "silver"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="line2" type="Label" parent="Shop/BackgroundText"]
+layout_mode = 0
+offset_top = 272.0
+offset_right = 640.0
+offset_bottom = 312.0
+text = "------------------------"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneyTitle" type="Label" parent="Shop/BackgroundText"]
+layout_mode = 0
+offset_top = 280.0
+offset_right = 640.0
+offset_bottom = 344.0
+text = "money"
+label_settings = SubResource("LabelSettings_d204e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GateButtons" type="Control" parent="Shop"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 256.0
+offset_top = 272.0
+offset_right = 896.0
+offset_bottom = 352.0
+
+[node name="IdentityButton" type="TextureButton" parent="Shop/GateButtons"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 138.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("11_m5awg")
+
+[node name="Stock" type="Label" parent="Shop/GateButtons/IdentityButton"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -43.3333
+offset_right = 123.0
+offset_bottom = -1.33331
+text = "10"
+label_settings = SubResource("LabelSettings_p0jb6")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="NotButton" type="TextureButton" parent="Shop/GateButtons"]
+layout_mode = 0
+offset_left = 96.0
+offset_right = 226.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("12_slsy7")
+
+[node name="Stock" type="Label" parent="Shop/GateButtons/NotButton"]
+layout_mode = 0
+offset_left = 16.6667
+offset_top = -43.3333
+offset_right = 134.667
+offset_bottom = -1.33334
+text = "8
+"
+label_settings = SubResource("LabelSettings_p0jb6")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="HadamardButton" type="TextureButton" parent="Shop/GateButtons"]
+layout_mode = 0
+offset_left = 184.0
+offset_right = 314.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("13_lk4g6")
+
+[node name="Stock" type="Label" parent="Shop/GateButtons/HadamardButton"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -43.3333
+offset_right = 123.0
+offset_bottom = -1.33331
+text = "5
+"
+label_settings = SubResource("LabelSettings_p0jb6")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="ConditionalButton" type="TextureButton" parent="Shop/GateButtons"]
+layout_mode = 0
+offset_left = 272.0
+offset_right = 402.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("14_cfrls")
+
+[node name="Stock" type="Label" parent="Shop/GateButtons/ConditionalButton"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -43.3333
+offset_right = 123.0
+offset_bottom = -1.33331
+text = "5
+"
+label_settings = SubResource("LabelSettings_p0jb6")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="NotConditionalButton" type="TextureButton" parent="Shop/GateButtons"]
+layout_mode = 0
+offset_left = 376.0
+offset_right = 506.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("15_pb3yr")
+
+[node name="Stock" type="Label" parent="Shop/GateButtons/NotConditionalButton"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -43.3333
+offset_right = 123.0
+offset_bottom = -1.33331
+text = "5
+"
+label_settings = SubResource("LabelSettings_p0jb6")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="SwapButton" type="TextureButton" parent="Shop/GateButtons"]
+layout_mode = 0
+offset_left = 472.0
+offset_right = 602.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(0.6, 0)
+texture_normal = ExtResource("16_owebv")
+
+[node name="Stock" type="Label" parent="Shop/GateButtons/SwapButton"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -43.3333
+offset_right = 123.0
+offset_bottom = -1.33331
+text = "2
+"
+label_settings = SubResource("LabelSettings_p0jb6")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="ObserveButton" type="TextureButton" parent="Shop/GateButtons"]
+layout_mode = 0
+offset_left = 560.0
+offset_right = 690.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("17_hap8o")
+
+[node name="Stock" type="Label" parent="Shop/GateButtons/ObserveButton"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -43.3333
+offset_right = 123.0
+offset_bottom = -1.33331
+text = "1
+"
+label_settings = SubResource("LabelSettings_p0jb6")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="MoneyButtons" type="Control" parent="Shop"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 256.0
+offset_top = 432.0
+offset_right = 896.0
+offset_bottom = 512.0
+
+[node name="BronzeButton" type="TextureButton" parent="Shop/MoneyButtons"]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 194.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("18_354d7")
+
+[node name="SilverButton" type="TextureButton" parent="Shop/MoneyButtons"]
+layout_mode = 0
+offset_left = 280.0
+offset_right = 410.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("19_aldox")
+
+[node name="GoldButton" type="TextureButton" parent="Shop/MoneyButtons"]
+layout_mode = 0
+offset_left = 496.0
+offset_right = 626.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("20_2o4os")
+
+[node name="ConfirmButton" type="Button" parent="Shop"]
+layout_mode = 0
+offset_left = 827.0
+offset_top = 74.0
+offset_right = 850.0
+offset_bottom = 102.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 20
+text = "v"
+
+[node name="ExitButton" type="Button" parent="Shop"]
+layout_mode = 0
+offset_left = 859.0
+offset_top = 74.0
+offset_right = 882.0
+offset_bottom = 102.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 20
+text = "X"
+
+[node name="StateTable" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 100
+script = ExtResource("21_o3y6l")
+
+[node name="Control" type="Control" parent="StateTable"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="StateTable/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StateTable/Control"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="StateTable/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 30
+text = "streetlamps & gates"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="StateTable/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer0" type="VBoxContainer" parent="StateTable/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="StateTable/Control/VBoxContainer/HBoxContainer/VBoxContainer0"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="StateTable/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="StateTable/Control/VBoxContainer/HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 30
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="StateTable/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="StateTable/Control/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 30
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="StateTable/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="StateTable/Control/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 30
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="StateTable/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="StateTable/Control/VBoxContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 30
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="StateTable/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="StateTable/Control/VBoxContainer/HBoxContainer/VBoxContainer5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 30
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="StateTable/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="StateTable/Control/VBoxContainer/HBoxContainer/VBoxContainer6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 30
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer7" type="VBoxContainer" parent="StateTable/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="StateTable/Control/VBoxContainer/HBoxContainer/VBoxContainer7"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 30
+text = "7"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer8" type="VBoxContainer" parent="StateTable/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="StateTable/Control/VBoxContainer/HBoxContainer/VBoxContainer8"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 30
+text = "8"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="StateTable"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 20
+text = "X"
+
+[node name="MyDiscarded" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 100
+script = ExtResource("22_75xf4")
+
+[node name="ColorRect" type="ColorRect" parent="MyDiscarded"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MyDiscarded"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="GridContainer" type="GridContainer" parent="MyDiscarded/MarginContainer"]
+layout_mode = 2
+columns = 6
+
+[node name="Button" type="Button" parent="MyDiscarded"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "X"
+
+[node name="Waiting" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = 263.0
+offset_right = 1050.0
+offset_bottom = 366.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_7c7m3")
+theme_override_font_sizes/font_size = 70
+text = "you just finished
+your turn!"
+horizontal_alignment = 1
+
+[node name="TutorialEnd" type="Control" parent="."]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_hemae")
+
+[node name="TutorialEndButton" type="Button" parent="TutorialEnd"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 181.0
+offset_top = 76.0
+offset_right = -171.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "back to homescreen"
+
+[connection signal="pressed" from="Rotary/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Rotary/Button" to="StateTable" method="_on_state_button_pressed"]
+[connection signal="pressed" from="ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="ShopButton" to="Cards" method="_on_shop_button_pressed"]
+[connection signal="pressed" from="MyDiscardButton" to="." method="_on_my_discard_button_pressed"]
+[connection signal="pressed" from="EndPhase" to="." method="_on_end_phase_pressed"]
+[connection signal="pressed" from="Deck/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Shop/GateButtons/IdentityButton" to="Shop" method="_on_identity_button_pressed"]
+[connection signal="pressed" from="Shop/GateButtons/NotButton" to="Shop" method="_on_not_button_pressed"]
+[connection signal="pressed" from="Shop/GateButtons/HadamardButton" to="Shop" method="_on_hadamard_button_pressed"]
+[connection signal="pressed" from="Shop/GateButtons/ConditionalButton" to="Shop" method="_on_conditional_button_pressed"]
+[connection signal="pressed" from="Shop/GateButtons/NotConditionalButton" to="Shop" method="_on_not_conditional_button_pressed"]
+[connection signal="pressed" from="Shop/GateButtons/SwapButton" to="Shop" method="_on_swap_button_pressed"]
+[connection signal="pressed" from="Shop/GateButtons/ObserveButton" to="Shop" method="_on_observe_button_pressed"]
+[connection signal="pressed" from="Shop/MoneyButtons/BronzeButton" to="Shop" method="_on_bronze_button_pressed"]
+[connection signal="pressed" from="Shop/MoneyButtons/SilverButton" to="Shop" method="_on_silver_button_pressed"]
+[connection signal="pressed" from="Shop/MoneyButtons/GoldButton" to="Shop" method="_on_gold_button_pressed"]
+[connection signal="pressed" from="Shop/ConfirmButton" to="Shop" method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="Shop/ExitButton" to="Cards" method="_on_shop_button_pressed"]
+[connection signal="pressed" from="Shop/ExitButton" to="Shop" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="StateTable/Button" to="StateTable" method="_on_button_pressed"]
+[connection signal="pressed" from="MyDiscarded/Button" to="MyDiscarded" method="_on_button_pressed"]
+[connection signal="pressed" from="TutorialEnd/TutorialEndButton" to="." method="_on_tutorial_end_button_pressed"]

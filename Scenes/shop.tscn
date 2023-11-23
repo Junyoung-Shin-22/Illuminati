@@ -1,0 +1,334 @@
+[gd_scene load_steps=13 format=3 uid="uid://bs2j462gi6sg7"]
+
+[ext_resource type="FontFile" uid="uid://csrcq85g3qx6i" path="res://Assets/Fonts/MajorMonoDisplay-Regular.ttf" id="1_8mkr3"]
+[ext_resource type="Texture2D" uid="uid://cvxw15qi0vfh7" path="res://Assets/Cards/Symbols/SymbolIdentity.png" id="2_eu0dl"]
+[ext_resource type="Texture2D" uid="uid://cdxicmg7s71ik" path="res://Assets/Cards/Symbols/SymbolNot.png" id="3_sxpvy"]
+[ext_resource type="Texture2D" uid="uid://dx03eft2ilpv6" path="res://Assets/Cards/Symbols/SymbolHadamard.png" id="4_ry8qm"]
+[ext_resource type="Texture2D" uid="uid://cg7c47gdr6op8" path="res://Assets/Cards/Symbols/SymbolConditional.png" id="5_bje58"]
+[ext_resource type="Texture2D" uid="uid://bk4yrm6wx4l8i" path="res://Assets/Cards/Symbols/SymbolNotConditional.png" id="6_x8dqs"]
+[ext_resource type="Texture2D" uid="uid://1lx64eq1e3fg" path="res://Assets/Cards/Symbols/SymbolSwap.png" id="7_dhjad"]
+[ext_resource type="Texture2D" uid="uid://dybvhnh3ct4gv" path="res://Assets/Cards/Symbols/SymbolObserve.png" id="8_g1fp8"]
+[ext_resource type="Texture2D" uid="uid://cay8v4fn81rem" path="res://Assets/Cards/Symbols/SymbolBronze.png" id="9_sdb13"]
+[ext_resource type="Texture2D" uid="uid://ds81m3uxptt16" path="res://Assets/Cards/Symbols/SymbolSilver.png" id="10_m2dkk"]
+[ext_resource type="Texture2D" uid="uid://bc1gndkvt4l1l" path="res://Assets/Cards/Symbols/SymbolGold.png" id="11_qmsy1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7bejd"]
+font = ExtResource("1_8mkr3")
+font_size = 35
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 256.0
+offset_top = 64.0
+offset_right = -256.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundText" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 256.0
+offset_top = 64.0
+offset_right = 896.0
+offset_bottom = 512.0
+
+[node name="Title" type="Label" parent="BackgroundText"]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 64.0
+text = "shop"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Money" type="Label" parent="BackgroundText"]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 320.0
+offset_bottom = 128.0
+text = "money: X"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Price" type="Label" parent="BackgroundText"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 64.0
+offset_right = 640.0
+offset_bottom = 128.0
+text = "price: X"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="line" type="Label" parent="BackgroundText"]
+layout_mode = 0
+offset_top = 104.0
+offset_right = 640.0
+offset_bottom = 144.0
+text = "------------------------"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GatesTitle" type="Label" parent="BackgroundText"]
+layout_mode = 0
+offset_top = 112.0
+offset_right = 640.0
+offset_bottom = 176.0
+text = "gates"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GateList" type="Control" parent="BackgroundText"]
+anchors_preset = 0
+offset_left = -256.0
+offset_top = -64.0
+offset_right = -216.0
+offset_bottom = -24.0
+
+[node name="GateNames1" type="Label" parent="BackgroundText/GateList"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 216.0
+offset_right = 339.0
+offset_bottom = 280.0
+text = "I"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GateNames2" type="Label" parent="BackgroundText/GateList"]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 216.0
+offset_right = 427.0
+offset_bottom = 280.0
+text = "X"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GateNames3" type="Label" parent="BackgroundText/GateList"]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 216.0
+offset_right = 515.0
+offset_bottom = 280.0
+text = "H"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GateNames4" type="Label" parent="BackgroundText/GateList"]
+layout_mode = 0
+offset_left = 531.0
+offset_top = 216.0
+offset_right = 603.0
+offset_bottom = 280.0
+text = "C"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GateNames5" type="Label" parent="BackgroundText/GateList"]
+layout_mode = 0
+offset_left = 635.0
+offset_top = 216.0
+offset_right = 707.0
+offset_bottom = 280.0
+text = "NC"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GateNames6" type="Label" parent="BackgroundText/GateList"]
+layout_mode = 0
+offset_left = 731.0
+offset_top = 216.0
+offset_right = 803.0
+offset_bottom = 280.0
+text = "S"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GateNames7" type="Label" parent="BackgroundText/GateList"]
+layout_mode = 0
+offset_left = 819.0
+offset_top = 216.0
+offset_right = 891.0
+offset_bottom = 280.0
+text = "M
+"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneyTitles" type="Control" parent="BackgroundText"]
+anchors_preset = 0
+offset_top = 320.0
+offset_right = 640.0
+offset_bottom = 384.0
+
+[node name="GoldTitle" type="Label" parent="BackgroundText/MoneyTitles"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = -8.0
+offset_right = 640.0
+offset_bottom = 56.0
+text = "gold"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BronzeTitle" type="Label" parent="BackgroundText/MoneyTitles"]
+layout_mode = 0
+offset_top = -8.0
+offset_right = 208.0
+offset_bottom = 56.0
+text = "bronze"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SilverTitle" type="Label" parent="BackgroundText/MoneyTitles"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = -8.0
+offset_right = 424.0
+offset_bottom = 56.0
+text = "silver"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="line2" type="Label" parent="BackgroundText"]
+layout_mode = 0
+offset_top = 272.0
+offset_right = 640.0
+offset_bottom = 312.0
+text = "------------------------"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneyTitle" type="Label" parent="BackgroundText"]
+layout_mode = 0
+offset_top = 280.0
+offset_right = 640.0
+offset_bottom = 344.0
+text = "money"
+label_settings = SubResource("LabelSettings_7bejd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GateButtons" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 256.0
+offset_top = 272.0
+offset_right = 896.0
+offset_bottom = 352.0
+
+[node name="IdentityButton" type="TextureButton" parent="GateButtons"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 138.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("2_eu0dl")
+
+[node name="NotButton" type="TextureButton" parent="GateButtons"]
+layout_mode = 0
+offset_left = 96.0
+offset_right = 226.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("3_sxpvy")
+
+[node name="HadamardButton" type="TextureButton" parent="GateButtons"]
+layout_mode = 0
+offset_left = 184.0
+offset_right = 314.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("4_ry8qm")
+
+[node name="ConditionalButton" type="TextureButton" parent="GateButtons"]
+layout_mode = 0
+offset_left = 272.0
+offset_right = 402.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("5_bje58")
+
+[node name="NotConditionalButton" type="TextureButton" parent="GateButtons"]
+layout_mode = 0
+offset_left = 376.0
+offset_right = 506.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("6_x8dqs")
+
+[node name="SwapButton" type="TextureButton" parent="GateButtons"]
+layout_mode = 0
+offset_left = 472.0
+offset_right = 602.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(0.6, 0)
+texture_normal = ExtResource("7_dhjad")
+
+[node name="ObserveButton" type="TextureButton" parent="GateButtons"]
+layout_mode = 0
+offset_left = 560.0
+offset_right = 690.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("8_g1fp8")
+
+[node name="MoneyButtons" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 256.0
+offset_top = 432.0
+offset_right = 896.0
+offset_bottom = 512.0
+
+[node name="BronzeButton" type="TextureButton" parent="MoneyButtons"]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 194.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("9_sdb13")
+
+[node name="SilverButton" type="TextureButton" parent="MoneyButtons"]
+layout_mode = 0
+offset_left = 280.0
+offset_right = 410.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("10_m2dkk")
+
+[node name="GoldButton" type="TextureButton" parent="MoneyButtons"]
+layout_mode = 0
+offset_left = 496.0
+offset_right = 626.0
+offset_bottom = 130.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("11_qmsy1")

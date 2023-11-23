@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://jl8aes7vl3fv"]
+
+[ext_resource type="FontFile" uid="uid://csrcq85g3qx6i" path="res://Assets/Fonts/MajorMonoDisplay-Regular.ttf" id="1_elcuy"]
+[ext_resource type="Script" path="res://Scripts/rules.gd" id="2_0yibc"]
+
+[sub_resource type="Theme" id="Theme_chp53"]
+default_font = ExtResource("1_elcuy")
+default_font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_4srpx"]
+font = ExtResource("1_elcuy")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_fk4wk"]
+font = ExtResource("1_elcuy")
+font_size = 40
+
+[node name="Goals" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_chp53")
+script = ExtResource("2_0yibc")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 106.0
+text = "
+GOALS"
+label_settings = SubResource("LabelSettings_4srpx")
+horizontal_alignment = 1
+
+[node name="Contents" type="Label" parent="."]
+layout_mode = 2
+offset_top = 110.0
+offset_right = 1152.0
+offset_bottom = 636.0
+size_flags_vertical = 3
+text = "
+
+apply the gates so that as 
+many lamps would have your color
+
+
+TIPS
+think of quantum entanglement
+to change the color of multiple
+lamps at once."
+label_settings = SubResource("LabelSettings_fk4wk")
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 22.0
+offset_top = 45.0
+offset_right = 207.0
+offset_bottom = 103.0
+text = "< back"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

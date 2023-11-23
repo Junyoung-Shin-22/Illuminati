@@ -1,0 +1,230 @@
+[gd_scene load_steps=16 format=3 uid="uid://dwp3d5edwwtwg"]
+
+[ext_resource type="FontFile" uid="uid://csrcq85g3qx6i" path="res://Assets/Fonts/MajorMonoDisplay-Regular.ttf" id="1_1b81p"]
+[ext_resource type="Script" path="res://Scripts/rules.gd" id="2_hu8ll"]
+[ext_resource type="Texture2D" uid="uid://cay8v4fn81rem" path="res://Assets/Cards/Symbols/SymbolBronze.png" id="3_un3da"]
+[ext_resource type="Texture2D" uid="uid://ds81m3uxptt16" path="res://Assets/Cards/Symbols/SymbolSilver.png" id="4_foyof"]
+[ext_resource type="Texture2D" uid="uid://bc1gndkvt4l1l" path="res://Assets/Cards/Symbols/SymbolGold.png" id="5_oahx0"]
+[ext_resource type="Texture2D" uid="uid://cvxw15qi0vfh7" path="res://Assets/Cards/Symbols/SymbolIdentity.png" id="6_ens8a"]
+[ext_resource type="Texture2D" uid="uid://cdxicmg7s71ik" path="res://Assets/Cards/Symbols/SymbolNot.png" id="7_sr01m"]
+[ext_resource type="Texture2D" uid="uid://dx03eft2ilpv6" path="res://Assets/Cards/Symbols/SymbolHadamard.png" id="8_8m3as"]
+[ext_resource type="Texture2D" uid="uid://cg7c47gdr6op8" path="res://Assets/Cards/Symbols/SymbolConditional.png" id="9_2w1l0"]
+[ext_resource type="Texture2D" uid="uid://1lx64eq1e3fg" path="res://Assets/Cards/Symbols/SymbolSwap.png" id="10_majaf"]
+[ext_resource type="Texture2D" uid="uid://dybvhnh3ct4gv" path="res://Assets/Cards/Symbols/SymbolObserve.png" id="11_8nrmp"]
+[ext_resource type="Texture2D" uid="uid://bk4yrm6wx4l8i" path="res://Assets/Cards/Symbols/SymbolNotConditional.png" id="12_l8acv"]
+
+[sub_resource type="Theme" id="Theme_chp53"]
+default_font = ExtResource("1_1b81p")
+default_font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_4srpx"]
+font = ExtResource("1_1b81p")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_pay2b"]
+font = ExtResource("1_1b81p")
+font_size = 29
+
+[node name="Goals" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_chp53")
+script = ExtResource("2_hu8ll")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 106.0
+text = "
+gates & items"
+label_settings = SubResource("LabelSettings_4srpx")
+horizontal_alignment = 1
+
+[node name="MoneyTitle" type="Label" parent="."]
+layout_mode = 2
+offset_top = 100.0
+offset_right = 384.0
+offset_bottom = 206.0
+text = "
+money"
+label_settings = SubResource("LabelSettings_4srpx")
+horizontal_alignment = 1
+
+[node name="MoneyTitle2" type="Label" parent="."]
+layout_mode = 2
+offset_left = 576.0
+offset_top = 100.0
+offset_right = 960.0
+offset_bottom = 206.0
+text = "
+gates"
+label_settings = SubResource("LabelSettings_4srpx")
+horizontal_alignment = 1
+
+[node name="MoneyExplained" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = -5.0
+offset_top = 236.0
+offset_right = 379.0
+offset_bottom = 636.0
+size_flags_vertical = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="MoneyExplained"]
+position = Vector2(10, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_un3da")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="MoneyExplained"]
+position = Vector2(10, 100)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_foyof")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="MoneyExplained"]
+position = Vector2(10, 200)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_oahx0")
+centered = false
+
+[node name="Label" type="Label" parent="MoneyExplained"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "purchase power
+      +1
+
+purchase power
+      +2
+
+purchase power
+      +3"
+label_settings = SubResource("LabelSettings_pay2b")
+
+[node name="GatesExplained" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 379.0
+offset_top = 236.0
+offset_right = 763.0
+offset_bottom = 636.0
+size_flags_vertical = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="GatesExplained"]
+position = Vector2(10, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_ens8a")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="GatesExplained"]
+position = Vector2(10, 100)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_sr01m")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="GatesExplained"]
+position = Vector2(10, 200)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_8m3as")
+centered = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="GatesExplained"]
+position = Vector2(10, 300)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_2w1l0")
+centered = false
+
+[node name="Label" type="Label" parent="GatesExplained"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "identity gate
+
+
+not gate
+
+
+hadamard gate
+
+
+conditional~
+(use with
+other cards)"
+label_settings = SubResource("LabelSettings_pay2b")
+horizontal_alignment = 1
+
+[node name="GatesExplained2" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 763.0
+offset_top = 236.0
+offset_right = 1147.0
+offset_bottom = 636.0
+size_flags_vertical = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="GatesExplained2"]
+position = Vector2(10, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_majaf")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="GatesExplained2"]
+position = Vector2(10, 100)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_8nrmp")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="GatesExplained2"]
+position = Vector2(10, 200)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_l8acv")
+centered = false
+
+[node name="Label" type="Label" parent="GatesExplained2"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "swap
+(swap states)
+
+observe
+(fix state)
+
+not
+conditional~
+(use with
+other cards)"
+label_settings = SubResource("LabelSettings_pay2b")
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 22.0
+offset_top = 45.0
+offset_right = 207.0
+offset_bottom = 103.0
+text = "< back"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

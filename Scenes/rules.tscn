@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddvfqos2tu7qi"]
+
+[ext_resource type="FontFile" uid="uid://csrcq85g3qx6i" path="res://Assets/Fonts/MajorMonoDisplay-Regular.ttf" id="1_5emrg"]
+[ext_resource type="Script" path="res://Scripts/rules.gd" id="2_bsc75"]
+
+[sub_resource type="Theme" id="Theme_chp53"]
+default_font = ExtResource("1_5emrg")
+default_font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_4srpx"]
+font = ExtResource("1_5emrg")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_fk4wk"]
+font = ExtResource("1_5emrg")
+font_size = 40
+
+[node name="Rules" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_chp53")
+script = ExtResource("2_bsc75")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 106.0
+text = "
+ RULES"
+label_settings = SubResource("LabelSettings_4srpx")
+horizontal_alignment = 1
+
+[node name="Contents" type="Label" parent="."]
+layout_mode = 2
+offset_top = 110.0
+offset_right = 1152.0
+offset_bottom = 636.0
+size_flags_vertical = 3
+text = "
+
+ 1. draw your card. max 7 cards in
+    your hand in 1st round, and 5
+    cards since then.
+ 2. buy cards if necessary.
+    (you can buy 1 at a time)
+ 3. apply the gates according to
+    your plan
+ 4. wait for enemy turn"
+label_settings = SubResource("LabelSettings_fk4wk")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 22.0
+offset_top = 45.0
+offset_right = 207.0
+offset_bottom = 103.0
+text = "< back"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

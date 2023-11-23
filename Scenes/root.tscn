@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0mgy2frwewe2"]
+
+[ext_resource type="Script" path="res://Scripts/root.gd" id="1_1o285"]
+[ext_resource type="FontFile" uid="uid://cmnpkg8hxfg7j" path="res://Assets/Fonts/title_button_font_file.tres" id="2_w55vs"]
+[ext_resource type="Texture2D" uid="uid://dg6ysln4pfs70" path="res://src/logo.png" id="3_iopf8"]
+[ext_resource type="Texture2D" uid="uid://i1gw05tkch57" path="res://src/light_texture.webp" id="5_bl114"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_521sn"]
+load_path = "res://.godot/imported/white_cursor.png-b35aa69bf7a88843e37d5b7ade9d4d1b.ctex"
+
+[node name="Title" type="Node2D"]
+script = ExtResource("1_1o285")
+
+[node name="TitleControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="JoinRoomButton" type="Button" parent="TitleControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = 86.0
+offset_right = 85.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_w55vs")
+theme_override_font_sizes/font_size = 24
+text = "join room"
+
+[node name="HowToPlayButton" type="Button" parent="TitleControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -103.0
+offset_top = 186.0
+offset_right = 103.0
+offset_bottom = 219.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_w55vs")
+theme_override_font_sizes/font_size = 24
+text = "how to play"
+
+[node name="Logo" type="Sprite2D" parent="TitleControl"]
+position = Vector2(573, 214)
+texture = ExtResource("3_iopf8")
+
+[node name="CursorSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.075, 0.075)
+texture = SubResource("CompressedTexture2D_521sn")
+
+[node name="CursorLight" type="PointLight2D" parent="CursorSprite"]
+scale = Vector2(13.3333, 13.3333)
+energy = 5.0
+texture = ExtResource("5_bl114")
+
+[connection signal="pressed" from="TitleControl/JoinRoomButton" to="." method="_on_join_room_button_pressed"]
+[connection signal="pressed" from="TitleControl/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]

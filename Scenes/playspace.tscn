@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmn441jlgcluq"]
+
+[ext_resource type="Script" path="res://Scripts/playspace.gd" id="1_6sppk"]
+[ext_resource type="Texture2D" uid="uid://ddg1itey440j4" path="res://Assets/Cards/BackNormal.png" id="2_yds4i"]
+[ext_resource type="Texture2D" uid="uid://b3cm1mph20iwc" path="res://Assets/Cards/BackPressed.png" id="3_5k4xq"]
+[ext_resource type="Texture2D" uid="uid://qdwbdso8aw3j" path="res://Assets/Cards/BackDisabled.png" id="4_1oujr"]
+[ext_resource type="Script" path="res://Scripts/DeckDraw.gd" id="5_xs3sj"]
+
+[node name="TempPlayspace" type="Node2D"]
+script = ExtResource("1_6sppk")
+
+[node name="Cards" type="Node2D" parent="."]
+
+[node name="Deck" type="Node2D" parent="."]
+
+[node name="DeckDraw" type="TextureButton" parent="Deck"]
+offset_left = 1000.0
+offset_top = 400.0
+offset_right = 1250.0
+offset_bottom = 750.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_yds4i")
+texture_pressed = ExtResource("3_5k4xq")
+texture_hover = ExtResource("2_yds4i")
+texture_disabled = ExtResource("4_1oujr")
+script = ExtResource("5_xs3sj")
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="UsedCards" type="Node2D" parent="."]
+
+[node name="DeckDraw2" type="TextureButton" parent="UsedCards"]
+offset_left = 30.0
+offset_top = 400.0
+offset_right = 280.0
+offset_bottom = 750.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("2_yds4i")
+texture_pressed = ExtResource("3_5k4xq")
+texture_hover = ExtResource("2_yds4i")
+texture_disabled = ExtResource("4_1oujr")
+script = ExtResource("5_xs3sj")
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true

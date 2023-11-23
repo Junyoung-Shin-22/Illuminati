@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://ciei6bj6r286e"]
+
+[ext_resource type="Script" path="res://Scripts/EndGame.gd" id="1_lyrfg"]
+[ext_resource type="Texture2D" uid="uid://dmmivwuhkw4sx" path="res://Assets/Images/2d_lights_and_shadows_neutral_point_light.webp" id="2_b8gg6"]
+[ext_resource type="FontFile" uid="uid://csrcq85g3qx6i" path="res://Assets/Fonts/MajorMonoDisplay-Regular.ttf" id="3_0uo6c"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0wue7"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i0ihf"]
+noise = SubResource("FastNoiseLite_0wue7")
+
+[node name="EndGame" type="Node2D"]
+script = ExtResource("1_lyrfg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.0784314, 0.0784314, 0.0784314, 1)
+position = Vector2(587, 407)
+scale = Vector2(3.57506, 2.05422)
+texture = SubResource("NoiseTexture2D_i0ihf")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(569, 323)
+scale = Vector2(2.61133, 2.63086)
+energy = 16.0
+texture = ExtResource("2_b8gg6")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 238.0
+offset_top = 263.0
+offset_right = 1052.0
+offset_bottom = 366.0
+theme_override_fonts/font = ExtResource("3_0uo6c")
+theme_override_font_sizes/font_size = 100
+text = "Placeholder"

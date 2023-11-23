@@ -1,0 +1,159 @@
+[gd_scene load_steps=8 format=3 uid="uid://cs6oednbkwbt6"]
+
+[ext_resource type="Script" path="res://Scripts/join_room.gd" id="1_78x6m"]
+[ext_resource type="FontFile" uid="uid://cxsgwdwqukytp" path="res://src/MajorMonoDisplay-Regular.ttf" id="2_q0ex8"]
+[ext_resource type="FontFile" uid="uid://cmnpkg8hxfg7j" path="res://Assets/Fonts/title_button_font_file.tres" id="3_vv1lc"]
+[ext_resource type="Texture2D" uid="uid://eo2uf5rxvqor" path="res://src/back_icon.png" id="4_ytqpb"]
+[ext_resource type="Texture2D" uid="uid://i1gw05tkch57" path="res://src/light_texture.webp" id="6_22aiv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_myp2q"]
+font = ExtResource("2_q0ex8")
+font_size = 48
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_521sn"]
+load_path = "res://.godot/imported/white_cursor.png-b35aa69bf7a88843e37d5b7ade9d4d1b.ctex"
+
+[node name="JoinRoom" type="Node2D"]
+script = ExtResource("1_78x6m")
+
+[node name="LabelControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="TextLabel" type="Label" parent="LabelControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -486.0
+offset_top = -168.0
+offset_right = 486.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Insert Room Info To Join:"
+label_settings = SubResource("LabelSettings_myp2q")
+horizontal_alignment = 1
+
+[node name="TextLabel2" type="Label" parent="LabelControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.0
+offset_top = -74.0
+offset_right = -126.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ip"
+label_settings = SubResource("LabelSettings_myp2q")
+horizontal_alignment = 1
+
+[node name="IPTextEdit" type="TextEdit" parent="LabelControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -74.0
+offset_right = 294.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_vv1lc")
+theme_override_font_sizes/font_size = 32
+text = "192.168.0.72"
+placeholder_text = "___.___.___.___"
+context_menu_enabled = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="TextLabel3" type="Label" parent="LabelControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -4.0
+offset_right = -152.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "port"
+label_settings = SubResource("LabelSettings_myp2q")
+horizontal_alignment = 1
+
+[node name="PortTextEdit" type="TextEdit" parent="LabelControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -4.0
+offset_right = 294.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_vv1lc")
+theme_override_font_sizes/font_size = 32
+text = "8000"
+placeholder_text = "____"
+context_menu_enabled = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="JoinButton" type="Button" parent="LabelControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = 126.0
+offset_right = 76.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_vv1lc")
+theme_override_font_sizes/font_size = 48
+text = "join"
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 979.0
+offset_bottom = 943.0
+scale = Vector2(0.1, 0.1)
+icon = ExtResource("4_ytqpb")
+
+[node name="CursorSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.075, 0.075)
+texture = SubResource("CompressedTexture2D_521sn")
+
+[node name="CursorLight" type="PointLight2D" parent="CursorSprite"]
+scale = Vector2(13.3333, 13.3333)
+energy = 5.0
+texture = ExtResource("6_22aiv")
+
+[connection signal="pressed" from="LabelControl/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

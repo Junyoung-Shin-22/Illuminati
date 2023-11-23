@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://co5gqufj13qf1"]
+
+[ext_resource type="Script" path="res://Scripts/shop_sprite.gd" id="1_gkqy1"]
+[ext_resource type="Texture2D" uid="uid://bmtn6abgoovro" path="res://Assets/Images/gas_station.png" id="1_mk3w2"]
+[ext_resource type="Texture2D" uid="uid://dmmivwuhkw4sx" path="res://Assets/Images/2d_lights_and_shadows_neutral_point_light.webp" id="2_11vrm"]
+[ext_resource type="FontFile" uid="uid://dsno5yje804yk" path="res://Assets/Fonts/Beautyschooldropoutii-4ZBl.ttf" id="2_80w4v"]
+
+[node name="shop_sprite" type="Node2D"]
+script = ExtResource("1_gkqy1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.490196, 0.490196, 0.490196, 1)
+texture = ExtResource("1_mk3w2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -442.0
+offset_top = -2.0
+offset_right = -151.0
+offset_bottom = 207.0
+theme_override_colors/font_color = Color(0.819608, 0, 0.960784, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_80w4v")
+theme_override_font_sizes/font_size = 200
+text = "open"
+
+[node name="PointLight2D" type="PointLight2D" parent="Label"]
+position = Vector2(163, 97)
+scale = Vector2(1.48828, 1.48828)
+energy = 5.0
+texture = ExtResource("2_11vrm")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(37, -20)
+scale = Vector2(1.48828, 1.48828)
+texture = ExtResource("2_11vrm")
+
+[node name="PointLight2D2" type="PointLight2D" parent="PointLight2D"]
+scale = Vector2(0.0738189, 0.0738189)
+texture = ExtResource("2_11vrm")

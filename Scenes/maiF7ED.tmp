@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://dbeb87s210dml"]
+
+[ext_resource type="Script" path="res://Scripts/main_game.gd" id="1_idrt0"]
+[ext_resource type="FontFile" uid="uid://csrcq85g3qx6i" path="res://Assets/Fonts/MajorMonoDisplay-Regular.ttf" id="2_6hsvk"]
+[ext_resource type="PackedScene" uid="uid://co5gqufj13qf1" path="res://Scenes/shop_sprite.tscn" id="2_c8k1c"]
+[ext_resource type="PackedScene" uid="uid://504dj7rekg71" path="res://Scenes/Rotary.tscn" id="2_uwkav"]
+[ext_resource type="Texture2D" uid="uid://cs83yy07yn4up" path="res://Assets/Images/dark_background.png" id="2_xjmpk"]
+[ext_resource type="Texture2D" uid="uid://bdflhx7r1vwmi" path="res://Assets/Cards/Back.png" id="6_6i4eg"]
+[ext_resource type="Texture2D" uid="uid://qdwbdso8aw3j" path="res://Assets/Cards/BackDisabled.png" id="8_pqx6g"]
+
+[node name="main_game" type="Node2D"]
+script = ExtResource("1_idrt0")
+total_rounds = null
+player = null
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(592.25, 290.75)
+scale = Vector2(3.86804, 2.4012)
+texture = ExtResource("2_xjmpk")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.811765, 0.811765, 0.811765, 1)
+
+[node name="shop_sprite" parent="." instance=ExtResource("2_c8k1c")]
+position = Vector2(1123, 26)
+scale = Vector2(0.4, 0.4)
+
+[node name="Container" type="Control" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="Rotary" parent="Container" instance=ExtResource("2_uwkav")]
+position = Vector2(576, 324)
+
+[node name="ShopButton" type="Button" parent="Container"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.0
+offset_bottom = 50.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_6hsvk")
+text = "shop"
+
+[node name="MyDiscardButton" type="Button" parent="Container"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -104.0
+offset_right = 236.0
+offset_bottom = -54.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_6hsvk")
+text = "Discarded cards"
+
+[node name="EndPhase" type="Button" parent="Container"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_right = 84.0
+offset_bottom = 15.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6hsvk")
+text = "EndPhase
+"
+
+[node name="Deck" type="Node2D" parent="Container"]
+
+[node name="Back" type="TextureButton" parent="Container/Deck"]
+offset_left = 1010.0
+offset_top = 453.0
+offset_right = 1260.0
+offset_bottom = 803.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("6_6i4eg")
+texture_disabled = ExtResource("8_pqx6g")
+
+[node name="Cards" type="Control" parent="Container"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 279.0
+offset_top = 493.0
+offset_right = 979.0
+offset_bottom = 613.0
+
+[connection signal="apply_initiate" from="Container/Rotary" to="." method="_on_rotary_apply_initiate"]
+[connection signal="apply_terminate" from="Container/Rotary" to="." method="_on_rotary_apply_terminate"]
+[connection signal="lamp_selected" from="Container/Rotary" to="." method="_on_rotary_lamp_selected"]
+[connection signal="show_gate_scene" from="Container/Rotary" to="." method="_on_rotary_show_gate_scene"]
+[connection signal="pressed" from="Container/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="Container/MyDiscardButton" to="." method="_on_my_discard_button_pressed"]
+[connection signal="pressed" from="Container/Deck/Back" to="." method="_on_back_pressed"]

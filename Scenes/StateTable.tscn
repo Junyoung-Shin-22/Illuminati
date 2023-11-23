@@ -1,0 +1,179 @@
+[gd_scene load_steps=3 format=3 uid="uid://qy6drvoic1we"]
+
+[ext_resource type="Script" path="res://Scripts/StateTable.gd" id="1_6ydj8"]
+[ext_resource type="FontFile" uid="uid://csrcq85g3qx6i" path="res://Assets/Fonts/MajorMonoDisplay-Regular.ttf" id="2_1wb71"]
+
+[node name="StateTable" type="MarginContainer"]
+top_level = true
+light_mask = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 100
+script = ExtResource("1_6ydj8")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1wb71")
+theme_override_font_sizes/font_size = 30
+text = "streetlamps & gates"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer0" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer0"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1wb71")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1wb71")
+theme_override_font_sizes/font_size = 30
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1wb71")
+theme_override_font_sizes/font_size = 30
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1wb71")
+theme_override_font_sizes/font_size = 30
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1wb71")
+theme_override_font_sizes/font_size = 30
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1wb71")
+theme_override_font_sizes/font_size = 30
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1wb71")
+theme_override_font_sizes/font_size = 30
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer7" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer7"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1wb71")
+theme_override_font_sizes/font_size = 30
+text = "7"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer8" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer8"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1wb71")
+theme_override_font_sizes/font_size = 30
+text = "8"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_1wb71")
+theme_override_font_sizes/font_size = 20
+text = "X"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

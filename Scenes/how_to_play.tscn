@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfmou4uk5huca"]
+
+[ext_resource type="FontFile" uid="uid://csrcq85g3qx6i" path="res://Assets/Fonts/MajorMonoDisplay-Regular.ttf" id="1_wd6kx"]
+[ext_resource type="Script" path="res://Scripts/how_to_play.gd" id="2_ox68k"]
+[ext_resource type="PackedScene" path="res://Scenes/rules.tscn" id="2_ps1q3"]
+[ext_resource type="PackedScene" path="res://Scenes/goals.tscn" id="3_8vr0b"]
+
+[sub_resource type="Theme" id="Theme_puyhp"]
+default_font = ExtResource("1_wd6kx")
+default_font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_ikous"]
+font = ExtResource("1_wd6kx")
+font_size = 60
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_521sn"]
+load_path = "res://.godot/imported/white_cursor.png-b35aa69bf7a88843e37d5b7ade9d4d1b.ctex"
+
+[node name="HowToPlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_puyhp")
+script = ExtResource("2_ox68k")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -242.0
+offset_top = 76.0
+offset_right = 242.0
+offset_bottom = 139.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "HOW TO PLAY"
+label_settings = SubResource("LabelSettings_ikous")
+
+[node name="GoalButton" type="Button" parent="."]
+layout_mode = 2
+anchor_top = 0.208333
+anchor_right = 0.867188
+anchor_bottom = 0.317901
+offset_left = 84.0
+offset_top = 95.0
+offset_right = 84.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GOAL"
+
+[node name="RuleButton" type="Button" parent="."]
+layout_mode = 2
+anchor_top = 0.353395
+anchor_right = 0.867188
+anchor_bottom = 0.462963
+offset_left = 84.0
+offset_top = 101.0
+offset_right = 83.9999
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RULES"
+
+[node name="GatesButton" type="Button" parent="."]
+layout_mode = 2
+anchor_top = 0.353395
+anchor_right = 0.867188
+anchor_bottom = 0.462963
+offset_left = 84.0
+offset_top = 201.0
+offset_right = 83.9999
+offset_bottom = 201.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GATES & ITEMS"
+
+[node name="TutorialButton" type="Button" parent="."]
+layout_mode = 2
+anchor_top = 0.498457
+anchor_right = 0.867188
+anchor_bottom = 0.608025
+offset_left = 84.0
+offset_top = 207.0
+offset_right = 83.9999
+offset_bottom = 207.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TUTORIAL"
+
+[node name="Rules" parent="." instance=ExtResource("2_ps1q3")]
+visible = false
+layout_mode = 1
+
+[node name="Goals" parent="." instance=ExtResource("3_8vr0b")]
+visible = false
+layout_mode = 1
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 30.0
+offset_right = 256.0
+offset_bottom = 88.0
+text = "< back"
+
+[node name="cursor" type="Sprite2D" parent="."]
+top_level = true
+scale = Vector2(0.075, 0.075)
+texture = SubResource("CompressedTexture2D_521sn")
+
+[connection signal="pressed" from="GoalButton" to="." method="_on_goal_button_pressed"]
+[connection signal="pressed" from="RuleButton" to="." method="_on_rule_button_pressed"]
+[connection signal="pressed" from="GatesButton" to="." method="_on_gates_button_pressed"]
+[connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

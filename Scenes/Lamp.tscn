@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://c633kdr1xd3wm"]
+
+[ext_resource type="Script" path="res://Scripts/Lamp.gd" id="1_1613j"]
+[ext_resource type="Texture2D" uid="uid://dmmivwuhkw4sx" path="res://Assets/Images/2d_lights_and_shadows_neutral_point_light.webp" id="1_nxv1u"]
+[ext_resource type="Texture2D" uid="uid://fc4w3i6x8u1h" path="res://Assets/Images/가로등.png" id="2_otoje"]
+[ext_resource type="PackedScene" uid="uid://ca4pn2sd70xvh" path="res://Scenes/gate_apply_effect.tscn" id="4_qwbig"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tk0ae"]
+
+[node name="Lamp" type="Node2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_1613j")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -92)
+texture = ExtResource("1_nxv1u")
+texture_scale = 1.6
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_otoje")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(10, 12)
+shape = SubResource("RectangleShape2D_tk0ae")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -120.0
+offset_right = 100.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("4_qwbig")]
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
