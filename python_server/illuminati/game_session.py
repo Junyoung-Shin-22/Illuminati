@@ -17,7 +17,7 @@ class GameSession:
 
         self.street_lamps = [StreetLamp(index=i, applied_gates=[]) for i in range(9)]
 
-        self.current_turn = 0
+        self.current_turn = 1
 
     async def process(self, socket, data):
         ip, command, *args = data.split()

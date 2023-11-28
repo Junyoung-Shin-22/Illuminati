@@ -52,7 +52,7 @@ func _ready():
 	if my_player_index == 1:
 		my_player_color = "red"
 	else:
-		my_player_index = "blue"
+		my_player_color = "blue"
 	$Label.text = "you are " + my_player_color + '\n' + "turn: " + str(currentRound)
 	for i in range(len(lamps)):
 		var lamp_light = lamps[i].get_child(0)
@@ -114,9 +114,12 @@ func _process_packet(packet):
 	print(args)
 	
 	if args[0] == "end_turn":
-		if int(args[1]) != my_player_index:
+		if int(args[2]) != my_player_index:
 			currentPhase = DrawPhase
 			end_sent = false
+	
+	if args[0] == "current_turn":
+		currentRound = int(args[1])
 
 func game_end():
 	applied_gates
