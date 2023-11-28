@@ -45,9 +45,15 @@ var applied_gates = {
 @onready var socket = AutoloadSocket.global_socket
 @onready var my_player_index = AutoloadSocket.my_player_index
 @onready var my_ip = AutoloadSocket.my_ip
+var my_player_color
 
 func _ready():
 	var lamps = $Rotary/Lamps.get_children()
+	if my_player_index == 1:
+		my_player_color = "red"
+	else:
+		my_player_index = "blue"
+	$Label.text = "you are " + my_player_color + '\n' + "turn: " + str(currentRound)
 	for i in range(len(lamps)):
 		var lamp_light = lamps[i].get_child(0)
 		if i % 2 == 0:
