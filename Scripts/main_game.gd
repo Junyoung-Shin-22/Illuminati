@@ -41,6 +41,8 @@ var applied_gates = {
 	9:[]
 }
 
+var cursor_pos
+var cursor_sprite
 
 @onready var socket = AutoloadSocket.global_socket
 @onready var my_player_index = AutoloadSocket.my_player_index
@@ -86,6 +88,8 @@ func _ready():
 		currentPhase = EndPhase
 		end_sent = true	
 	
+	cursor_sprite = $CursorSprite
+	
 var end_sent = false
 
 func _process(delta):
@@ -99,6 +103,11 @@ func _process(delta):
 ##		
 	else:
 		$Waiting.visible = false
+	
+	cursor_pos = get_viewport().get_mouse_position()
+
+	cursor_sprite.position.x = cursor_pos.x
+	cursor_sprite.position.y = cursor_pos.y
 
 func _process_socket():
 	socket.poll()
@@ -120,6 +129,7 @@ func _process_packet(packet):
 	
 	if args[0] == "current_turn":
 		currentRound = int(args[1])
+		$Label.text = "you are " + my_player_color + '\n' + "turn: " + str(currentRound)
 
 func game_end():
 	applied_gates

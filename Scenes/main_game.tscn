@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dbeb87s210dml"]
+[gd_scene load_steps=27 format=3 uid="uid://dbeb87s210dml"]
 
 [ext_resource type="Script" path="res://Scripts/main_game.gd" id="1_idrt0"]
 [ext_resource type="FontFile" uid="uid://csrcq85g3qx6i" path="res://Assets/Fonts/MajorMonoDisplay-Regular.ttf" id="2_6hsvk"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bc1gndkvt4l1l" path="res://Assets/Cards/Symbols/SymbolGold.png" id="19_20fet"]
 [ext_resource type="Script" path="res://Scripts/MyDiscarded.gd" id="20_kfp6b"]
 [ext_resource type="Script" path="res://Scripts/StateTable.gd" id="20_nr1vs"]
+[ext_resource type="Texture2D" uid="uid://i1gw05tkch57" path="res://src/light_texture.webp" id="23_7hwfk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d204e"]
 font = ExtResource("2_6hsvk")
@@ -33,6 +34,9 @@ outline_color = Color(0, 0, 0, 1)
 font = ExtResource("2_6hsvk")
 font_size = 30
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_48p0e"]
+load_path = "res://.godot/imported/white_cursor.png-b35aa69bf7a88843e37d5b7ade9d4d1b.ctex"
 
 [node name="main_game" type="Node2D"]
 position = Vector2(3, 0)
@@ -948,6 +952,15 @@ theme_override_fonts/font = ExtResource("2_6hsvk")
 theme_override_font_sizes/font_size = 100
 text = "Waiting......"
 horizontal_alignment = 1
+
+[node name="CursorSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.075, 0.075)
+texture = SubResource("CompressedTexture2D_48p0e")
+
+[node name="CursorLight" type="PointLight2D" parent="CursorSprite"]
+scale = Vector2(13.3333, 13.3333)
+energy = 5.0
+texture = ExtResource("23_7hwfk")
 
 [connection signal="pressed" from="Rotary/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Rotary/Button" to="StateTable" method="_on_state_button_pressed"]
