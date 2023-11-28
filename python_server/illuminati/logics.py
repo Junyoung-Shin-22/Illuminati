@@ -79,10 +79,10 @@ async def _buy_card(game_session, socket, ip, *args):
 
 
 async def _use_card(game_session, socket, ip, *args):
-    if game_session.user1.IP == ip:
-        pass
-    elif game_session.user2.IP == ip:
-        pass
+    user = args[0]
+    gate = args[1]
+    lamp = args[2]
+    broadcast(game_session, f"use_card {user} {gate} {lamp}")
 
 
 

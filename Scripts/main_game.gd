@@ -134,6 +134,11 @@ func _process_packet(packet):
 	if args[0] == "buy_card":
 		if int(args[1]) != my_player_index:
 			$Shop.Inventory[args[2]][4] -= 1
+			$Shop.update_stock_label()
+	
+	if args[0] == "use_card":
+		if int(args[1]) != my_player_index:
+			applied_gates[int(args[3])].append(args[2])
 	
 func game_end():
 	applied_gates
@@ -215,6 +220,7 @@ func apply_gate(lamp):
 	
 	# apply gate to lamp
 	applied_gates[int(str(lamp.name))].append(selected_gate.cardName)
+	socket.send_text(my_ip + " use_card " + str(my_player_index) + " " + selected_gate.cardName + " " + str(lamp.name))
 	
 	selected_gate.shader_off()
 	Hand.erase(selected_gate)

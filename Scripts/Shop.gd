@@ -82,7 +82,7 @@ func _on_confirm_button_pressed():
 	
 	# 잔고 처리 
 	Inventory[selected_item][4] -= 1
-	socket.send_text(my_ip + " buy_card " + my_player_index + " " +selected_item)
+	socket.send_text(my_ip + " buy_card " + str(my_player_index) + " " +selected_item)
 	update_stock_label()
 	
 	# 재화 카드 사용
