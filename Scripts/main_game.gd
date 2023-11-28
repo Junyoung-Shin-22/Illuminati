@@ -130,7 +130,11 @@ func _process_packet(packet):
 	if args[0] == "current_turn":
 		currentRound = int(args[1])
 		$Label.text = "you are " + my_player_color + '\n' + "turn: " + str(currentRound)
-
+	
+	if args[0] == "buy_card":
+		if int(args[1]) != my_player_index:
+			$Shop.Inventory[args[2]][4] -= 1
+	
 func game_end():
 	applied_gates
 	#확률 계산...

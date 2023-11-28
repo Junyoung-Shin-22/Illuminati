@@ -26,6 +26,10 @@ var Inventory = { # [type, name, purchase power, price, stock]
 
 signal shop_button_clicked(item)
 
+@onready var socket = AutoloadSocket.global_socket
+@onready var my_player_index = AutoloadSocket.my_player_index
+@onready var my_ip = AutoloadSocket.my_ip
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("shop_button_clicked", handle_shop_button_clicked)
@@ -78,6 +82,7 @@ func _on_confirm_button_pressed():
 	
 	# 잔고 처리 
 	Inventory[selected_item][4] -= 1
+	socket.send_text(my_ip + " buy_card " + my_player_index + " " +selected_item)
 	update_stock_label()
 	
 	# 재화 카드 사용

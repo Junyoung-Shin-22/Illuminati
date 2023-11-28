@@ -72,10 +72,9 @@ async def _end_turn(game_session, socket, ip, *args):
 
 
 async def _buy_card(game_session, socket, ip, *args):
-    if game_session.user1.IP == ip:
-        pass
-    elif game_session.user2.IP == ip:
-        pass
+    user = args[0]
+    item = args[1]
+    broadcast(game_session, f"buy_card {user} {item}")
 
 
 
