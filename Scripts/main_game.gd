@@ -137,13 +137,12 @@ func _process_packet(packet):
 			currentPhase = DrawPhase
 			end_sent = false
 		
-		if int(args[2]) == 2:
-			var m = 0
-			for i in range(9):
-				if len(applied_gates[i]) > m: m = len(applied_gates[i])
-			for i in range(9):
-				while len(applied_gates[i]) < m:
-					applied_gates[i].append('Identity')
+		var m = 0
+		for i in range(9):
+			if len(applied_gates[i]) > m: m = len(applied_gates[i])
+		for i in range(9):
+			while len(applied_gates[i]) < m:
+				applied_gates[i].append('Identity')
 			
 	
 	if args[0] == "current_turn":
