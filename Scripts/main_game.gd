@@ -141,7 +141,7 @@ func _process_packet(packet):
 			if len(applied_gates[i]) > m: m = len(applied_gates[i])
 		for i in range(9):
 			while len(applied_gates[i]) < m:
-				applied_gates[i].append('Identity')
+				applied_gates[i].append('Empty')
 			
 	
 	if args[0] == "current_turn":
@@ -263,6 +263,8 @@ func apply_gate(lamp):
 		if currentPhase != SwapPhase:
 			currentPhase = SwapPhase
 			return
+		else:
+			currentPhase = EndPhase
 	else:
 		currentPhase = EndPhase
 	

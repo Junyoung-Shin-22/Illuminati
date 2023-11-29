@@ -7,7 +7,7 @@ var conditional_sprite = preload("res://Assets/Cards/Symbols/SymbolConditional.p
 var not_conditional_sprite = preload("res://Assets/Cards/Symbols/SymbolNotConditional.png")
 var Swap_sprite = preload("res://Assets/Cards/Symbols/SymbolSwap.png")
 var observe_sprite = preload("res://Assets/Cards/Symbols/SymbolObserve.png")
-
+var empty_sprite = preload("res://Assets/Cards/Symbols/SymbolEmpty.png")
 
 func change_type(gateName):
 	match gateName:
@@ -25,4 +25,5 @@ func change_type(gateName):
 			$Sprite2D.set_texture(Swap_sprite)
 		"Observe":
 			$Sprite2D.set_texture(observe_sprite)
-	print($Sprite2D.texture)
+		"Empty":
+			$Sprite2D.set_texture(empty_sprite)
