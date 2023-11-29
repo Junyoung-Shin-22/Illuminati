@@ -117,6 +117,7 @@ if __name__ == '__main__':
     ]
 
     parsed_gates = parse_applied_gates(applied_gates)
+    print(parse_applied_gates)
     qc = calc_gate(parsed_gates)
     qc.measure_all()
     print(qc)
