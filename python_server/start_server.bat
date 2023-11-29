@@ -1,1 +1,1 @@
-python main.py 8000
+conda run -n illuminati python main.py 8000

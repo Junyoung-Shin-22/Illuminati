@@ -1,86 +1,121 @@
 from qiskit import QuantumCircuit
 
-applied_gates = {
-	0:[],
-	1:[],
-	2:[],
-	3:[],
-	4:[],
-	5:[],
-	6:[],
-	7:[],
-	8:[],
-	9:[]
-}
+GATE_HANDLERS = None
 
-def calc_gate():
-    qc = QuantumCircuit(9,9)
-    
+def get_gates_at_idx(gates, idx):  # Any way to access by columns in Python?
+    return [row[idx] for row in gates]
+
+def parse_applied_gates(applied_gates):
+    parsed_gates = []
+
+    for i, row in enumerate(applied_gates):
+        cond_type = None
+        gate = None
+
+        source_qbit = None
+        target_qbit = None
+
+        for j in range(len(row)):
+            if applied_gates[i][j] in ("Identity", "Empty"):
+                gate = "Identity"
+                target_qbit = j
+            
+            elif applied_gates[i][j] in ("Conditional", "NotConditional"):
+                cond_type = applied_gates[i][j]
+                source_qbit = j
+            
+            elif applied_gates[i][j] in ("Swap",):
+                gate = "Swap"
+                if source is not None:
+                    source = j
+                else:
+                    target = j
+            
+            elif applied_gates[i][j] in ("Not", "Hadanard", "Observe"):
+                gate = applied_gates[i][j]
+                target = j
+        
+        parsed_gates.append({
+            'cond_type': cond_type,
+            'gate': gate,
+            'source_qbit': source_qbit,
+            'target_qbit': target_qbit,
+        })
+            
+    return parsed_gates
+
+def calc_gate(parsed_gates):
     # initialize circuit
+    qc = QuantumCircuit(9,9)
     for i in range(9):
         if i % 2 != 0:
             qc.x(i)
     
+    for operation in parsed_gates:
+        gate = operation['gate']
+        cond = operation['cond_type']
+
+        src = operation['source_qbit']
+        dst = operation['target_qbit']
+
+        GATE_HANDLERS[gate](cond, src, dst)
     
-    for i in range(len(applied_gates[0])):
-        gates = get_gates_at_idx(i)
+    return qc
 
-        # Check if there are any effective gates
-        effective_gates = []
-        for gate in gates:
-            if gate not in ["Identity", "Conditional", "NotConditional", "Empty"]:
-                effective_gates = [gate, gates.index(gate)]
+def _handle_identity(qc, cond, src, dst):
+    pass
 
-        # Pass if there's none (includes something useless like conditional identity)
-        if not effective_gates:
-            for idx in range(9): qc.i(idx) # 
-            continue
+def _handle_not(qc, cond, src, dst):
+    if cond is not None:
+        if cond == 'NotConditional':
+            qc.x(src)
+            qc.cx(src, dst)
+            qc.x(src)
+        else:
+            qc.cx(src, dst)
+    else:
+        qc.x(dst)
 
-        # Check if conditional/not_conditional in gates and save its idx
-        cond_idx = -1
-        not_conditional = False
-        if "Conditional" in gates:
-            cond_idx = gates.index("Conditional")
-        elif "NotConditional" in gates:
-            cond_idx = gates.index("NotConditional")
-            not_conditional = True
-            
-        gate_name = effective_gates[0][0]
-        gate_idx = effective_gates[0][1]
+def _handle_hadamard(qc, cond, src, dst):
+    if cond is not None:
+        if cond == 'NotConditional':
+            qc.x(src)
+            qc.ch(src, dst)
+            qc.x(src)
+        else:
+            qc.cx(src, dst)
+    else:
+        qc.x(dst)
 
-        match gate_name:
-            case "Swap":
-                src_idx =gate_idx
-                dst_idx = effective_gates[1][1]
-                qc.swap(src_idx, dst_idx)
-                continue
-            case "Observe":
-                qc.measure(gate_idx, gate_idx)
-                continue
-            case "Not":
-                if cond_idx != -1:
-                    if not_conditional:
-                        qc.x(cond_idx)
-                        qc.cx(cond_idx, gate_idx)
-                        qc.x(cond_idx)
-                    else:
-                        qc.cx(cond_idx, gate_idx)
-                else:
-                    qc.x(gate_idx)
-            case "Hadamard":
-                if cond_idx != -1:
-                    if not_conditional:
-                        qc.x(cond_idx)
-                        qc.ch(cond_idx, gate_idx)
-                        qc.x(cond_idx)
-                    else:
-                        qc.ch(cond_idx, gate_idx)
-                else:
-                    qc.h(gate_idx)
+def _handle_swap(qc, cond, src, dst):
+    qc.swap(src, dst)
+
+def _handle_observe(qc, cond, src, dst):
+    qc.measure(dst, dst)
 
 
-def get_gates_at_idx(idx):  # Any way to access by columns in Python?
-    gates = []
-    for array in applied_gates.values():
-        gates.append(array[idx])
-    return gates
+GATE_HANDLERS = {
+    "Identity": _handle_identity,
+    "Not": _handle_not,
+    "Hadamard": _handle_hadamard,
+    "Swap": _handle_swap,
+    "Observe": _handle_observe,
+}
+
+if __name__ == '__main__':
+    applied_gates = [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+    ]
+
+    parsed_gates = parse_applied_gates(applied_gates)
+    qc = calc_gate(parsed_gates)
+    print(qc)
