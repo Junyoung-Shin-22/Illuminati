@@ -2,8 +2,12 @@ from qiskit import QuantumCircuit
 
 GATE_HANDLERS = None
 
-def get_gates_at_idx(gates, idx):  # Any way to access by columns in Python?
-    return [row[idx] for row in gates]
+def transpose_list(ls):
+    t = []
+    for i in range(len(ls[0])):
+        t.append([row[i] for row in ls])
+    
+    return t
 
 def parse_applied_gates(applied_gates):
     parsed_gates = []
