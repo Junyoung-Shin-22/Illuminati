@@ -20,7 +20,7 @@ def parse_applied_gates(applied_gates):
         target_qbit = None
 
         for j in range(len(row)):
-            if applied_gates[i][j] in ("Identity", "Empty"):
+            if applied_gates[i][j] in ("Identity", "Not", "Hadanard", "Observe"):
                 gate = "Identity"
                 target_qbit = j
             
@@ -30,14 +30,10 @@ def parse_applied_gates(applied_gates):
             
             elif applied_gates[i][j] in ("Swap",):
                 gate = "Swap"
-                if source is not None:
-                    source = j
+                if source_qbit is not None:
+                    source_qbit = j
                 else:
-                    target = j
-            
-            elif applied_gates[i][j] in ("Not", "Hadanard", "Observe"):
-                gate = applied_gates[i][j]
-                target = j
+                    target_qbit = j
         
         parsed_gates.append({
             'cond_type': cond_type,
