@@ -237,14 +237,12 @@ func apply_gate(lamp):
 	
 	if currentPhase == EndPhase:
 		return
-	
-	# ControlPhase means that control gate was already appied to some lamp
+
 	if currentPhase == ControlPhase:
-		if selected_gate.cardName == "Identity" or selected_gate.cardName == "Not" or selected_gate.cardName == "Hadamard" : 
-			pass
-		else:
-			return
-	
+		for i in range(9):
+			if len(applied_gates[int(str(lamp.name))]) > len(applied_gates[i]):
+				return
+		
 	# Selecting Conditional Card makes Phase into ControlPhase
 	# only if hand has Identity or Not or Hadamard
 	if selected_gate.cardName == "Conditional" or selected_gate.cardName == "NotConditional":

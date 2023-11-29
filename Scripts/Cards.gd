@@ -32,6 +32,13 @@ func _ready():
 	connect("selected_cards_updated", $"../Shop".update_money_label)
 
 func _on_select(card):
+	# ControlPhase means that control gate was already appied to some lamp
+	if $"..".currentPhase == $"..".ControlPhase:
+		if card.cardName == "Identity" or card.cardName == "Not" or card.cardName == "Hadamard" : 
+			pass
+		else:
+			return
+			
 	var shop_open = $'../Shop'.visible
 	if shop_open:
 		if CARDS[card.cardName][0] != "Money": return
