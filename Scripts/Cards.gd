@@ -47,6 +47,7 @@ func _on_select(card):
 			selected_cards_updated.emit()
 	else:
 		if CARDS[card.cardName][0] != "Gate" : return
+
 		if selected_child: 
 			if card == selected_child:
 				card.shader_off()

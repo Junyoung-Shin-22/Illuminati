@@ -7,7 +7,7 @@ extends Node2D
 enum {InHand, MovingToDumped, Dumped, InMouse, FocusInHand, MoveDrawnCardToHand, ReOrganizeHand}
 
 # phase enum
-enum {DrawPhase, PurchasePhase, ActionPhase, EndPhase}
+enum {DrawPhase, PurchasePhase, ActionPhase, EndPhase, ControlPhase}
 
 var cardBase = preload("res://Scenes/CardBase.tscn")
 # initial Deck for each player. To be edited for game balance
@@ -67,17 +67,27 @@ func _ready():
 			lamp_light.color.g = 0
 			lamp_light.color.b = 1
 	
+#	var to_add_to_deck = [
+#		"Identity", 
+#		"Identity",
+#		"Identity",
+#		"Not",
+#		"Not",
+#		"Hadamard",
+#		"Bronze",
+#		"Bronze",
+#		"Bronze",
+#		"Bronze",
+#	]
 	var to_add_to_deck = [
-		"Identity", 
-		"Identity",
+		"Conditional", 
+		"NotConditional",
 		"Identity",
 		"Not",
 		"Not",
 		"Hadamard",
-		"Bronze",
-		"Bronze",
-		"Bronze",
-		"Bronze",
+		"NotConditional",
+		"Conditional"
 	]
 	for name in to_add_to_deck:
 		var new_card = cardBase.instantiate()
@@ -172,6 +182,8 @@ func drawCard():
 	
 	var card = Deck.pop_at(randi_range(0, len(Deck)-1))
 	
+	
+	
 	Hand.push_back(card)
 	$Cards.add_child(card)
 	card.scale = Vector2(1, 1) * 100/250
@@ -227,6 +239,22 @@ func apply_gate(lamp):
 	if currentPhase == EndPhase:
 		return
 	
+	# ControlPhase means that control gate was already appied to some lamp
+	if currentPhase == ControlPhase:
+		if selected_gate.name == "Identity" or selected_gate.name == "Not" or selected_gate.name == "Hadamard" : 
+			pass
+		else:
+			return
+	
+	# Selecting Conditional Card makes Phase into ControlPhase
+	# only if hand has Identity or Not or Hadamard
+	if selected_gate.name == "Conditional" or selected_gate.name == "NotConditional":
+		var has_applicant = false 
+		for hand_card in Hand:
+			if hand_card.name == "Identity" or hand_card.name == "Not" or hand_card.name == "Hadamard" : has_applicant=true
+		if !has_applicant: return 
+		currentPhase = ControlPhase
+	
 	# apply gate to lamp
 	applied_gates[int(str(lamp.name))].append(selected_gate.cardName)
 	socket.send_text(my_ip + " use_card " + str(my_player_index) + " " + selected_gate.cardName + " " + str(lamp.name))
@@ -236,14 +264,17 @@ func apply_gate(lamp):
 	DumpedCards.append(selected_gate)
 	$'Cards'.remove_child(selected_gate)
 	
+	
 	organize_hand()
 #	print(applied_gates[int(str(lamp.name))])
 	$shop_sprite/Label.visible = false
-	$shop_sprite/PointLight2D.visible = false
+	$shop_sprite/PointLight2D.visible = false	
+	
 	currentPhase = EndPhase
 
 
 func _on_end_phase_pressed():
+	if currentPhase == ControlPhase : return
 	if currentPhase == EndPhase : return
 	$shop_sprite/Label.visible = false
 	$shop_sprite/PointLight2D.visible = false
