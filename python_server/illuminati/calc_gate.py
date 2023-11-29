@@ -1,4 +1,5 @@
 from qiskit import QuantumCircuit
+from qiskit.primitives import Sampler
 
 GATE_HANDLERS = None
 
@@ -20,8 +21,8 @@ def parse_applied_gates(applied_gates):
         target_qbit = None
 
         for j in range(len(row)):
-            if applied_gates[i][j] in ("Identity", "Not", "Hadanard", "Observe"):
-                gate = "Identity"
+            if applied_gates[i][j] in ("Identity", "Not", "Hadamard", "Observe"):
+                gate = applied_gates[i][j]
                 target_qbit = j
             
             elif applied_gates[i][j] in ("Conditional", "NotConditional"):
@@ -47,9 +48,9 @@ def parse_applied_gates(applied_gates):
 def calc_gate(parsed_gates):
     # initialize circuit
     qc = QuantumCircuit(9,9)
-    for i in range(9):
-        if i % 2 != 0:
-            qc.x(i)
+    # for i in range(9):
+    #     if i % 2 != 0:
+    #         qc.x(i)
     
     for operation in parsed_gates:
         gate = operation['gate']
@@ -58,7 +59,7 @@ def calc_gate(parsed_gates):
         src = operation['source_qbit']
         dst = operation['target_qbit']
 
-        GATE_HANDLERS[gate](qc,cond, src, dst)
+        GATE_HANDLERS[gate](qc, cond, src, dst)
     
     return qc
 
@@ -83,9 +84,9 @@ def _handle_hadamard(qc, cond, src, dst):
             qc.ch(src, dst)
             qc.x(src)
         else:
-            qc.cx(src, dst)
+            qc.ch(src, dst)
     else:
-        qc.x(dst)
+        qc.h(dst)
 
 def _handle_swap(qc, cond, src, dst):
     qc.swap(src, dst)
@@ -104,20 +105,26 @@ GATE_HANDLERS = {
 
 if __name__ == '__main__':
     applied_gates = [
-        ["Empty", "Empty", "Empty", "Empty", "Empty", "Empty"],
-        ["Conditional", "Empty", "Empty", "Empty", "Empty", "Empty"],
-        ["Empty", "Empty", "Empty", "Empty", "Empty", "Empty"],
-        ["Empty", "Empty", "Empty", "Empty", "Empty", "Empty"],
-        ["Empty", "Empty", "Empty", "Empty", "Empty", "Empty"],
-        ["Empty", "Empty", "Empty", "Empty", "Empty", "Empty"],
-        ["Empty", "Empty", "Empty", "Empty", "Empty", "Empty"],
-        ["Empty", "Empty", "Empty", "Empty", "Empty", "Empty"],
-        ["Empty", "Empty", "Empty", "Empty", "Empty", "Empty"],
-        ["Not", "Empty", "Empty", "Empty", "Empty", "Empty"],
+        ["Empty", "Empty"],
+        ["Hadamard", "Conditional"],
+        ["Empty", "Empty"],
+        ["Empty", "Empty"],
+        ["Empty", "Empty"],
+        ["Empty", "Empty"],
+        ["Empty", "Empty"],
+        ["Empty", "Empty"],
+        ["Empty", "Not"]
     ]
-
-    parsed_gates = parse_applied_gates(applied_gates)
-    print(parse_applied_gates)
+    parsed_gates = parse_applied_gates(transpose_list(applied_gates))
+    # print(*parsed_gates, sep= '\n')
     qc = calc_gate(parsed_gates)
-    qc.measure_all()
-    print(qc)
+    qc.measure_all(inplace=True, add_bits=False)
+    
+    sampler = Sampler()
+    
+    job = sampler.run(qc)
+    result = job.result()
+    dist = result.quasi_dists[0]
+    
+    for i in dist:
+        print(f"qbits: {i:09b} | p={dist[i]}")
