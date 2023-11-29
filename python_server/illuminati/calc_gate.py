@@ -58,7 +58,7 @@ def calc_gate(parsed_gates):
         src = operation['source_qbit']
         dst = operation['target_qbit']
 
-        GATE_HANDLERS[gate](cond, src, dst)
+        GATE_HANDLERS[gate](qc,cond, src, dst)
     
     return qc
 
@@ -104,18 +104,19 @@ GATE_HANDLERS = {
 
 if __name__ == '__main__':
     applied_gates = [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
+        ["Empty", "Empty", "Empty", "Empty", "Empty", "Empty"],
+        ["Conditional", "Empty", "Empty", "Empty", "Empty", "Empty"],
+        ["Empty", "Empty", "Empty", "Empty", "Empty", "Empty"],
+        ["Empty", "Empty", "Empty", "Empty", "Empty", "Empty"],
+        ["Empty", "Empty", "Empty", "Empty", "Empty", "Empty"],
+        ["Empty", "Empty", "Empty", "Empty", "Empty", "Empty"],
+        ["Empty", "Empty", "Empty", "Empty", "Empty", "Empty"],
+        ["Empty", "Empty", "Empty", "Empty", "Empty", "Empty"],
+        ["Empty", "Empty", "Empty", "Empty", "Empty", "Empty"],
+        ["Not", "Empty", "Empty", "Empty", "Empty", "Empty"],
     ]
 
     parsed_gates = parse_applied_gates(applied_gates)
     qc = calc_gate(parsed_gates)
+    qc.measure_all()
     print(qc)
