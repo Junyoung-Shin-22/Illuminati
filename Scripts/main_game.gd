@@ -241,17 +241,17 @@ func apply_gate(lamp):
 	
 	# ControlPhase means that control gate was already appied to some lamp
 	if currentPhase == ControlPhase:
-		if selected_gate.name == "Identity" or selected_gate.name == "Not" or selected_gate.name == "Hadamard" : 
+		if selected_gate.cardName == "Identity" or selected_gate.cardName == "Not" or selected_gate.cardName == "Hadamard" : 
 			pass
 		else:
 			return
 	
 	# Selecting Conditional Card makes Phase into ControlPhase
 	# only if hand has Identity or Not or Hadamard
-	if selected_gate.name == "Conditional" or selected_gate.name == "NotConditional":
+	if selected_gate.cardName == "Conditional" or selected_gate.cardName == "NotConditional":
 		var has_applicant = false 
 		for hand_card in Hand:
-			if hand_card.name == "Identity" or hand_card.name == "Not" or hand_card.name == "Hadamard" : has_applicant=true
+			if hand_card.cardName == "Identity" or hand_card.cardName == "Not" or hand_card.cardName == "Hadamard" : has_applicant=true
 		if !has_applicant: return 
 		
 	
@@ -269,9 +269,9 @@ func apply_gate(lamp):
 #	print(applied_gates[int(str(lamp.name))])
 	$shop_sprite/Label.visible = false
 	$shop_sprite/PointLight2D.visible = false	
-	if selected_gate.name == "Conditional" or selected_gate.name == "NotConditional":
+	if selected_gate.cardName == "Conditional" or selected_gate.cardName == "NotConditional":
 		currentPhase = ControlPhase
-	elif selected_gate.name == "Swap":
+	elif selected_gate.cardName == "Swap":
 		currentPhase = SwapPhase
 	else:
 		currentPhase = EndPhase
