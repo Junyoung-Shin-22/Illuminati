@@ -83,11 +83,10 @@ func _ready():
 		"Conditional", 
 		"NotConditional",
 		"Identity",
-		"Not",
+		"Swap",
 		"Not",
 		"Hadamard",
-		"NotConditional",
-		"Conditional"
+		"NotConditional"
 	]
 	for name in to_add_to_deck:
 		var new_card = cardBase.instantiate()
@@ -238,7 +237,7 @@ func apply_gate(lamp):
 	if currentPhase == EndPhase:
 		return
 
-	if currentPhase == ControlPhase:
+	if currentPhase == ControlPhase or currentPhase == SwapPhase:
 		for i in range(9):
 			if len(applied_gates[int(str(lamp.name))]) > len(applied_gates[i]):
 				return	
@@ -261,8 +260,9 @@ func apply_gate(lamp):
 	if selected_gate.cardName == "Conditional" or selected_gate.cardName == "NotConditional":
 		currentPhase = ControlPhase
 	elif selected_gate.cardName == "Swap":
-		currentPhase = SwapPhase
-		return
+		if currentPhase != SwapPhase:
+			currentPhase = SwapPhase
+			return
 	else:
 		currentPhase = EndPhase
 	
