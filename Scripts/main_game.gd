@@ -7,7 +7,7 @@ extends Node2D
 enum {InHand, MovingToDumped, Dumped, InMouse, FocusInHand, MoveDrawnCardToHand, ReOrganizeHand}
 
 # phase enum
-enum {DrawPhase, PurchasePhase, ActionPhase, EndPhase, ControlPhase}
+enum {DrawPhase, PurchasePhase, ActionPhase, ControlPhase, SwapPhase, EndPhase}
 
 var cardBase = preload("res://Scenes/CardBase.tscn")
 # initial Deck for each player. To be edited for game balance
@@ -253,7 +253,7 @@ func apply_gate(lamp):
 		for hand_card in Hand:
 			if hand_card.name == "Identity" or hand_card.name == "Not" or hand_card.name == "Hadamard" : has_applicant=true
 		if !has_applicant: return 
-		currentPhase = ControlPhase
+		
 	
 	# apply gate to lamp
 	applied_gates[int(str(lamp.name))].append(selected_gate.cardName)
@@ -269,8 +269,12 @@ func apply_gate(lamp):
 #	print(applied_gates[int(str(lamp.name))])
 	$shop_sprite/Label.visible = false
 	$shop_sprite/PointLight2D.visible = false	
-	
-	currentPhase = EndPhase
+	if selected_gate.name == "Conditional" or selected_gate.name == "NotConditional":
+		currentPhase = ControlPhase
+	elif selected_gate.name == "Swap":
+		currentPhase = SwapPhase
+	else:
+		currentPhase = EndPhase
 
 
 func _on_end_phase_pressed():
