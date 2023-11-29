@@ -39,6 +39,8 @@ func _on_select(card):
 		else:
 			return
 			
+	if $"..".currentPhase == $"..".SwapPhase:	
+		return
 	var shop_open = $'../Shop'.visible
 	if shop_open:
 		if CARDS[card.cardName][0] != "Money": return

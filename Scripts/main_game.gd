@@ -241,7 +241,8 @@ func apply_gate(lamp):
 	if currentPhase == ControlPhase:
 		for i in range(9):
 			if len(applied_gates[int(str(lamp.name))]) > len(applied_gates[i]):
-				return
+				return	
+		
 		
 	# Selecting Conditional Card makes Phase into ControlPhase
 	# only if hand has Identity or Not or Hadamard
@@ -256,6 +257,15 @@ func apply_gate(lamp):
 	applied_gates[int(str(lamp.name))].append(selected_gate.cardName)
 	socket.send_text(my_ip + " use_card " + str(my_player_index) + " " + selected_gate.cardName + " " + str(lamp.name))
 	
+	
+	if selected_gate.cardName == "Conditional" or selected_gate.cardName == "NotConditional":
+		currentPhase = ControlPhase
+	elif selected_gate.cardName == "Swap":
+		currentPhase = SwapPhase
+		return
+	else:
+		currentPhase = EndPhase
+	
 	selected_gate.shader_off()
 	Hand.erase(selected_gate)
 	DumpedCards.append(selected_gate)
@@ -266,12 +276,8 @@ func apply_gate(lamp):
 #	print(applied_gates[int(str(lamp.name))])
 	$shop_sprite/Label.visible = false
 	$shop_sprite/PointLight2D.visible = false	
-	if selected_gate.cardName == "Conditional" or selected_gate.cardName == "NotConditional":
-		currentPhase = ControlPhase
-	elif selected_gate.cardName == "Swap":
-		currentPhase = SwapPhase
-	else:
-		currentPhase = EndPhase
+	
+	
 
 
 func _on_end_phase_pressed():
